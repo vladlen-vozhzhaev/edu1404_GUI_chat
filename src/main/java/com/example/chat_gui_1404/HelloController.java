@@ -25,9 +25,11 @@ public class HelloController {
     @FXML
     Button sendBtn;
     @FXML
-    public void handlerSend(){
-        String text = textField.getText();
-        textArea.appendText(text+"\n");
+    TextArea usersTextArea;
+    @FXML
+    public void handlerSend(){ // Метод отправи сообщения
+        String text = textField.getText(); // ...
+        textArea.appendText(text+"\n"); // ...
         textField.clear();
         textField.requestFocus();
         try {
@@ -39,7 +41,7 @@ public class HelloController {
     @FXML
     public void connect(){
         try {
-            Socket socket = new Socket("localhost", 8179);
+            Socket socket = new Socket("62.113.97.10", 8179);
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             out = new DataOutputStream(socket.getOutputStream());
 
@@ -51,7 +53,10 @@ public class HelloController {
                             Object object = in.readObject();
                             if(object.getClass().equals(usersName.getClass())){
                                 usersName = (ArrayList<String>) object;
-                                textArea.appendText(usersName.toString()+"\n");
+                                usersTextArea.setText("Пользователи онлайн:");
+                                for (String userName: usersName) {
+                                    usersTextArea.appendText("\n"+userName);
+                                }
                             }else{
                                 String response = (String) object;
                                 textArea.appendText(response+"\n");

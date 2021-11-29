@@ -2,16 +2,24 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="400" prefWidth="300" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat_gui_1404.HelloController">
-   <children>
-      <TextArea editable="false" prefHeight="350.0" prefWidth="200.0" fx:id="textArea"/>
-      <HBox prefHeight="25.0" prefWidth="200.0">
-         <children>
-            <TextField onAction="#handlerSend" prefWidth="225.0" fx:id="textField"/>
-            <Button fx:id="sendBtn" disable="true" onAction="#handlerSend" mnemonicParsing="false" prefWidth="75.0" text="Отправить" />
-         </children>
-      </HBox>
-      <Button onAction="#connect" fx:id="connectBtn" mnemonicParsing="false" prefWidth="300.0" text="Подключиться" />
-   </children>
-</VBox>
+<HBox prefHeight="400" prefWidth="500" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chat_gui_1404.HelloController">
+   <TextArea editable="false" prefHeight="400" prefWidth="200.0" fx:id="usersTextArea">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </TextArea>
+   <VBox alignment="CENTER" prefHeight="400" prefWidth="300">
+      <children>
+         <TextArea fx:id="textArea" editable="false" prefHeight="350.0" prefWidth="200.0" />
+         <HBox prefHeight="25.0" prefWidth="200.0">
+            <children>
+               <TextField fx:id="textField" onAction="#handlerSend" prefWidth="225.0" />
+               <Button fx:id="sendBtn" disable="true" mnemonicParsing="false" onAction="#handlerSend" prefWidth="75.0" text="Отправить" />
+            </children>
+         </HBox>
+         <Button fx:id="connectBtn" mnemonicParsing="false" onAction="#connect" prefWidth="300.0" text="Подключиться" />
+      </children>
+   </VBox>
+</HBox>
